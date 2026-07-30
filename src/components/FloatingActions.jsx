@@ -2,11 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import { Phone, MessageCircle, ArrowUp } from "lucide-react";
+import { useTheme } from "@/context/ThemeContext";
+import { Phone, MessageCircle, ArrowUp, Sun, Moon } from "lucide-react";
 
 export default function FloatingActions() {
   const { lang, setLang } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const isDark = theme === "dark";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,11 +30,29 @@ export default function FloatingActions() {
 
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
+      {/* Light / Dark Mode Floating Switcher */}
+      <button
+        onClick={toggleTheme}
+        className={`w-11 h-11 rounded-full border shadow-xl flex items-center justify-center transition-all hover:scale-110 ${
+          isDark
+            ? "bg-slate-900/90 border-slate-700 text-amber-400 hover:bg-slate-800"
+            : "bg-white/95 border-slate-300 text-amber-500 hover:bg-slate-100"
+        }`}
+        title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        aria-label="Toggle theme"
+      >
+        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
+
       {/* Scroll to Top */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className="w-11 h-11 rounded-full bg-slate-900/90 border border-slate-700 text-slate-200 hover:text-white hover:bg-slate-800 shadow-xl flex items-center justify-center transition-all hover:scale-110"
+          className={`w-11 h-11 rounded-full border shadow-xl flex items-center justify-center transition-all hover:scale-110 ${
+            isDark
+              ? "bg-slate-900/90 border-slate-700 text-slate-200 hover:text-white hover:bg-slate-800"
+              : "bg-white/95 border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
+          }`}
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5" />

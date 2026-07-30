@@ -1,4 +1,5 @@
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import "./globals.css";
 
 export const metadata = {
@@ -38,9 +39,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body className="bg-slate-950 text-slate-100 antialiased font-sans">
-        <LanguageProvider>{children}</LanguageProvider>
+    <html lang="en" className="scroll-smooth dark">
+      <body className="antialiased font-sans transition-colors duration-300">
+        <LanguageProvider>
+          <ThemeProvider>{children}</ThemeProvider>
+        </LanguageProvider>
       </body>
     </html>
   );

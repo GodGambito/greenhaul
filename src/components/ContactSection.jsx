@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import {
   Phone,
   Mail,
@@ -32,6 +33,8 @@ function InstagramIcon({ className = "w-5 h-5" }) {
 
 export default function ContactSection() {
   const { t } = useLanguage();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const [formData, setFormData] = useState({
     name: "",
@@ -103,18 +106,29 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-slate-900 text-white relative">
+    <section
+      id="contact"
+      className={`py-20 relative transition-colors duration-300 ${
+        isDark ? "bg-slate-900 text-white" : "bg-white text-slate-900"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
-          <span className="text-emerald-400 font-extrabold text-xs uppercase tracking-widest bg-emerald-950/80 px-3.5 py-1.5 rounded-full border border-emerald-800/50 inline-block">
+          <span
+            className={`font-extrabold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full border inline-block ${
+              isDark
+                ? "text-emerald-400 bg-emerald-950/80 border-emerald-800/50"
+                : "text-emerald-700 bg-emerald-50 border-emerald-200"
+            }`}
+          >
             {t.contact.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
             {t.contact.title}
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className={`text-base sm:text-lg ${isDark ? "text-slate-300" : "text-slate-600"}`}>
             {t.contact.subtitle}
           </p>
         </div>
@@ -123,10 +137,16 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           {/* Left Column: Direct Info Card */}
-          <div className="lg:col-span-5 bg-slate-950 p-8 rounded-3xl border border-slate-800 space-y-8 shadow-xl">
+          <div
+            className={`lg:col-span-5 p-8 rounded-3xl border space-y-8 shadow-xl ${
+              isDark ? "bg-slate-950 border-slate-800" : "bg-slate-50 border-slate-200 shadow-md"
+            }`}
+          >
             <div>
-              <h3 className="text-2xl font-bold text-white mb-2">{t.contact.infoTitle}</h3>
-              <p className="text-sm text-slate-400">
+              <h3 className={`text-2xl font-bold mb-2 ${isDark ? "text-white" : "text-slate-900"}`}>
+                {t.contact.infoTitle}
+              </h3>
+              <p className={`text-sm ${isDark ? "text-slate-400" : "text-slate-600"}`}>
                 Contact us directly via call, email, or social media for immediate response.
               </p>
             </div>
@@ -136,35 +156,39 @@ export default function ContactSection() {
               
               {/* Phone */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-emerald-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">
+                  <span className={`text-xs font-semibold uppercase tracking-wider block ${isDark ? "text-slate-400" : "text-slate-500"}`}>
                     {t.contact.phoneLabel}
                   </span>
                   <a
                     href="tel:4252802915"
-                    className="text-lg font-bold text-white hover:text-emerald-400 transition-colors"
+                    className={`text-lg font-bold transition-colors ${
+                      isDark ? "text-white hover:text-emerald-400" : "text-slate-900 hover:text-emerald-600"
+                    }`}
                   >
                     (425) 280-2915
                   </a>
-                  <p className="text-xs text-emerald-400 mt-0.5">Call or Text Anytime</p>
+                  <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-0.5">Call or Text Anytime</p>
                 </div>
               </div>
 
               {/* Email */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-emerald-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">
+                  <span className={`text-xs font-semibold uppercase tracking-wider block ${isDark ? "text-slate-400" : "text-slate-500"}`}>
                     {t.contact.emailLabel}
                   </span>
                   <a
                     href="mailto:greenhaul.removal@gmail.com"
-                    className="text-base font-bold text-white hover:text-emerald-400 transition-colors break-all"
+                    className={`text-base font-bold transition-colors break-all ${
+                      isDark ? "text-white hover:text-emerald-400" : "text-slate-900 hover:text-emerald-600"
+                    }`}
                   >
                     greenhaul.removal@gmail.com
                   </a>
@@ -173,17 +197,17 @@ export default function ContactSection() {
 
               {/* Hours / Schedule */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-emerald-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">
+                  <span className={`text-xs font-semibold uppercase tracking-wider block ${isDark ? "text-slate-400" : "text-slate-500"}`}>
                     {t.contact.hoursLabel}
                   </span>
-                  <p className="text-sm font-semibold text-white mt-1">
+                  <p className={`text-sm font-semibold mt-1 ${isDark ? "text-white" : "text-slate-900"}`}>
                     🗓️ {t.contact.hoursTextMonSat}
                   </p>
-                  <p className="text-sm font-semibold text-emerald-400">
+                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">
                     🗓️ {t.contact.hoursTextSun}
                   </p>
                 </div>
@@ -191,11 +215,11 @@ export default function ContactSection() {
 
               {/* Social Media */}
               <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-emerald-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <Share2 className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">
+                  <span className={`text-xs font-semibold uppercase tracking-wider block ${isDark ? "text-slate-400" : "text-slate-500"}`}>
                     {t.contact.socialLabel}
                   </span>
                   <div className="flex flex-col gap-2 mt-2 font-medium text-sm">
@@ -203,7 +227,9 @@ export default function ContactSection() {
                       href="https://facebook.com/search/top?q=greenhaul%20removal"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-2"
+                      className={`transition-colors flex items-center gap-2 ${
+                        isDark ? "text-slate-300 hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                      }`}
                     >
                       <FacebookIcon className="w-4 h-4 text-blue-500" />
                       <span>Facebook: <strong>greenhaul removal</strong></span>
@@ -212,7 +238,9 @@ export default function ContactSection() {
                       href="https://instagram.com/greenhaul.removal"
                       target="_blank"
                       rel="noreferrer"
-                      className="text-slate-300 hover:text-emerald-400 transition-colors flex items-center gap-2"
+                      className={`transition-colors flex items-center gap-2 ${
+                        isDark ? "text-slate-300 hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                      }`}
                     >
                       <InstagramIcon className="w-4 h-4 text-pink-500" />
                       <span>Instagram: <strong>greenhaul.removal</strong></span>
@@ -222,15 +250,15 @@ export default function ContactSection() {
               </div>
 
               {/* Service Areas */}
-              <div className="flex items-start gap-4 border-t border-slate-900 pt-6">
-                <div className="w-10 h-10 rounded-xl bg-emerald-950 border border-emerald-700/50 flex items-center justify-center text-emerald-400 shrink-0">
+              <div className={`flex items-start gap-4 border-t pt-6 ${isDark ? "border-slate-900" : "border-slate-200"}`}>
+                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-950 border border-emerald-300 dark:border-emerald-700/50 flex items-center justify-center text-emerald-600 dark:text-emerald-400 shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-xs text-slate-400 font-semibold uppercase tracking-wider block">
+                  <span className={`text-xs font-semibold uppercase tracking-wider block ${isDark ? "text-slate-400" : "text-slate-500"}`}>
                     {t.contact.areaLabel}
                   </span>
-                  <p className="text-sm font-semibold text-slate-200 mt-1">
+                  <p className={`text-sm font-semibold mt-1 ${isDark ? "text-slate-200" : "text-slate-800"}`}>
                     {t.contact.areaText}
                   </p>
                 </div>
@@ -251,9 +279,13 @@ export default function ContactSection() {
                 href="https://wa.me/14252802915?text=Hello%20GreenHaul!"
                 target="_blank"
                 rel="noreferrer"
-                className="bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold py-3 px-4 rounded-xl text-center border border-slate-700 transition-all flex items-center justify-center gap-2"
+                className={`text-xs font-bold py-3 px-4 rounded-xl text-center border transition-all flex items-center justify-center gap-2 ${
+                  isDark
+                    ? "bg-slate-800 hover:bg-slate-700 text-white border-slate-700"
+                    : "bg-white hover:bg-slate-100 text-slate-900 border-slate-300 shadow-sm"
+                }`}
               >
-                <MessageSquare className="w-4 h-4 text-emerald-400" />
+                <MessageSquare className="w-4 h-4 text-emerald-500" />
                 <span>WhatsApp</span>
               </a>
             </div>
@@ -261,9 +293,13 @@ export default function ContactSection() {
           </div>
 
           {/* Right Column: Quote Form */}
-          <div className="lg:col-span-7 bg-slate-950 p-8 sm:p-10 rounded-3xl border border-slate-800 shadow-2xl">
-            <h3 className="text-2xl font-bold text-white mb-2">{t.contact.formTitle}</h3>
-            <p className="text-sm text-slate-400 mb-8">{t.contact.formSubtitle}</p>
+          <div
+            className={`lg:col-span-7 p-8 sm:p-10 rounded-3xl border shadow-2xl ${
+              isDark ? "bg-slate-950 border-slate-800" : "bg-slate-50 border-slate-200 shadow-lg"
+            }`}
+          >
+            <h3 className={`text-2xl font-bold mb-2 ${isDark ? "text-white" : "text-slate-900"}`}>{t.contact.formTitle}</h3>
+            <p className={`text-sm mb-8 ${isDark ? "text-slate-400" : "text-slate-600"}`}>{t.contact.formSubtitle}</p>
 
             {/* Notification Messages */}
             {status.success && (
@@ -285,7 +321,7 @@ export default function ContactSection() {
               
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
                     Name *
                   </label>
                   <input
@@ -295,12 +331,16 @@ export default function ContactSection() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder={t.contact.namePlaceholder}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className={`w-full border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors ${
+                      isDark
+                        ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                        : "bg-white border-slate-300 text-slate-900 placeholder-slate-400"
+                    }`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
                     Phone *
                   </label>
                   <input
@@ -310,14 +350,18 @@ export default function ContactSection() {
                     value={formData.phone}
                     onChange={handleChange}
                     placeholder={t.contact.phonePlaceholder}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className={`w-full border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors ${
+                      isDark
+                        ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                        : "bg-white border-slate-300 text-slate-900 placeholder-slate-400"
+                    }`}
                   />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
                     Email *
                   </label>
                   <input
@@ -327,12 +371,16 @@ export default function ContactSection() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder={t.contact.emailPlaceholder}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                    className={`w-full border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors ${
+                      isDark
+                        ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                        : "bg-white border-slate-300 text-slate-900 placeholder-slate-400"
+                    }`}
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                  <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
                     Service *
                   </label>
                   <select
@@ -341,7 +389,11 @@ export default function ContactSection() {
                     required
                     value={formData.service}
                     onChange={handleChange}
-                    className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-emerald-500 transition-colors"
+                    className={`w-full border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors ${
+                      isDark
+                        ? "bg-slate-900 border-slate-800 text-white"
+                        : "bg-white border-slate-300 text-slate-900"
+                    }`}
                   >
                     <option value="">{t.contact.serviceSelect}</option>
                     <option value="Junk Removal & Hauling">Junk Removal & Hauling</option>
@@ -354,7 +406,7 @@ export default function ContactSection() {
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
                   City / ZIP Code *
                 </label>
                 <input
@@ -364,12 +416,16 @@ export default function ContactSection() {
                   value={formData.location}
                   onChange={handleChange}
                   placeholder={t.contact.locationPlaceholder}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors"
+                  className={`w-full border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors ${
+                    isDark
+                      ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                      : "bg-white border-slate-300 text-slate-900 placeholder-slate-400"
+                  }`}
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">
+                <label className={`block text-xs font-bold uppercase tracking-wider mb-2 ${isDark ? "text-slate-300" : "text-slate-700"}`}>
                   Job Details *
                 </label>
                 <textarea
@@ -380,14 +436,18 @@ export default function ContactSection() {
                   value={formData.details}
                   onChange={handleChange}
                   placeholder={t.contact.detailsPlaceholder}
-                  className="w-full bg-slate-900 border border-slate-800 rounded-xl px-4 py-3.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition-colors resize-y"
+                  className={`w-full border rounded-xl px-4 py-3.5 text-sm focus:outline-none focus:border-emerald-500 transition-colors resize-y ${
+                    isDark
+                      ? "bg-slate-900 border-slate-800 text-white placeholder-slate-500"
+                      : "bg-white border-slate-300 text-slate-900 placeholder-slate-400"
+                  }`}
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status.loading}
-                className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-extrabold text-base py-4 px-6 rounded-xl shadow-lg shadow-emerald-950 transition-all flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-500 hover:to-green-500 text-white font-extrabold text-base py-4 px-6 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 <Send className="w-5 h-5" />
                 <span>{status.loading ? t.contact.submitting : t.contact.submitBtn}</span>

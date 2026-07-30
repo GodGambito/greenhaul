@@ -3,10 +3,14 @@
 import { useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { Maximize2, X, Sparkles, CheckCircle } from "lucide-react";
 
 export default function BeforeAfterGallery() {
   const { t } = useLanguage();
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
+
   const [filter, setFilter] = useState("all");
   const [activeModalItem, setActiveModalItem] = useState(null);
 
@@ -17,64 +21,55 @@ export default function BeforeAfterGallery() {
     : galleryItems.filter((item) => item.category === filter);
 
   return (
-    <section id="gallery" className="py-20 bg-slate-950 text-white relative">
+    <section
+      id="gallery"
+      className={`py-20 relative transition-colors duration-300 ${
+        isDark ? "bg-slate-950 text-white" : "bg-slate-50 text-slate-900"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
-          <span className="text-emerald-400 font-extrabold text-xs uppercase tracking-widest bg-emerald-950/80 px-3.5 py-1.5 rounded-full border border-emerald-800/50 inline-block">
+          <span
+            className={`font-extrabold text-xs uppercase tracking-widest px-3.5 py-1.5 rounded-full border inline-block ${
+              isDark
+                ? "text-emerald-400 bg-emerald-950/80 border-emerald-800/50"
+                : "text-emerald-700 bg-emerald-100 border-emerald-300"
+            }`}
+          >
             {t.gallery.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          <h2 className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
             {t.gallery.title}
           </h2>
-          <p className="text-slate-300 text-base sm:text-lg">
+          <p className={`text-base sm:text-lg ${isDark ? "text-slate-300" : "text-slate-600"}`}>
             {t.gallery.subtitle}
           </p>
         </div>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap items-center justify-center gap-3 mt-10">
-          <button
-            onClick={() => setFilter("all")}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
-              filter === "all"
-                ? "bg-emerald-600 text-white shadow-md shadow-emerald-950"
-                : "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800"
-            }`}
-          >
-            {t.gallery.all}
-          </button>
-          <button
-            onClick={() => setFilter("yard")}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
-              filter === "yard"
-                ? "bg-emerald-600 text-white shadow-md shadow-emerald-950"
-                : "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800"
-            }`}
-          >
-            {t.gallery.yard}
-          </button>
-          <button
-            onClick={() => setFilter("cleaning")}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
-              filter === "cleaning"
-                ? "bg-emerald-600 text-white shadow-md shadow-emerald-950"
-                : "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800"
-            }`}
-          >
-            {t.gallery.cleaning}
-          </button>
-          <button
-            onClick={() => setFilter("hauling")}
-            className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
-              filter === "hauling"
-                ? "bg-emerald-600 text-white shadow-md shadow-emerald-950"
-                : "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800"
-            }`}
-          >
-            {t.gallery.hauling}
-          </button>
+          {[
+            { id: "all", label: t.gallery.all },
+            { id: "yard", label: t.gallery.yard },
+            { id: "cleaning", label: t.gallery.cleaning },
+            { id: "hauling", label: t.gallery.hauling },
+          ].map((btn) => (
+            <button
+              key={btn.id}
+              onClick={() => setFilter(btn.id)}
+              className={`px-5 py-2.5 rounded-full text-xs font-bold transition-all ${
+                filter === btn.id
+                  ? "bg-emerald-600 text-white shadow-md shadow-emerald-900/30"
+                  : isDark
+                  ? "bg-slate-900 text-slate-300 hover:bg-slate-800 border border-slate-800"
+                  : "bg-white text-slate-700 hover:bg-slate-100 border border-slate-300 shadow-sm"
+              }`}
+            >
+              {btn.label}
+            </button>
+          ))}
         </div>
 
         {/* Gallery Grid */}
@@ -83,7 +78,11 @@ export default function BeforeAfterGallery() {
             <div
               key={item.id}
               onClick={() => setActiveModalItem(item)}
-              className="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-emerald-500/50 transition-all cursor-pointer group shadow-xl hover:shadow-emerald-950/40"
+              className={`rounded-2xl overflow-hidden border transition-all cursor-pointer group shadow-xl ${
+                isDark
+                  ? "bg-slate-900 border-slate-800 hover:border-emerald-500/50 hover:shadow-emerald-950/40"
+                  : "bg-white border-slate-200 hover:border-emerald-400 shadow-md hover:shadow-lg"
+              }`}
             >
               {/* Image Container */}
               <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-950">
@@ -121,7 +120,7 @@ export default function BeforeAfterGallery() {
           ))}
         </div>
 
-        <p className="text-center text-xs text-slate-500 mt-8">
+        <p className={`text-center text-xs mt-8 ${isDark ? "text-slate-500" : "text-slate-400"}`}>
           🔍 {t.gallery.clickToZoom}
         </p>
 
@@ -134,7 +133,9 @@ export default function BeforeAfterGallery() {
           onClick={() => setActiveModalItem(null)}
         >
           <div
-            className="relative max-w-4xl w-full bg-slate-900 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl flex flex-col max-h-[90vh]"
+            className={`relative max-w-4xl w-full rounded-2xl overflow-hidden border shadow-2xl flex flex-col max-h-[90vh] ${
+              isDark ? "bg-slate-900 border-slate-700" : "bg-slate-900 border-slate-800 text-white"
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
