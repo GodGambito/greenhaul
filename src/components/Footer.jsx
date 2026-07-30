@@ -36,6 +36,7 @@ export default function Footer() {
                   src="/images/logo.jpeg"
                   alt="GreenHaul Logo"
                   fill
+                  sizes="48px"
                   className="object-cover"
                 />
               </div>

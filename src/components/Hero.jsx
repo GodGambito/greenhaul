@@ -110,6 +110,7 @@ export default function Hero() {
                   src="/images/logo.jpeg"
                   alt="GreenHaul Junk Removal and Cleaning Services"
                   fill
+                  sizes="(max-width: 640px) 288px, (max-width: 1024px) 384px, 420px"
                   className="object-cover hover:scale-105 transition-transform duration-500"
                   priority
                 />

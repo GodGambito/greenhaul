@@ -64,6 +64,7 @@ export default function Navbar() {
                   src="/images/logo.jpeg"
                   alt="GreenHaul Logo"
                   fill
+                  sizes="48px"
                   className="object-cover"
                   priority
                 />

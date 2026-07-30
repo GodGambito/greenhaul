@@ -91,6 +91,7 @@ export default function BeforeAfterGallery() {
                   src={item.image}
                   alt={item.title}
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 600px"
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent opacity-80" />
@@ -156,6 +157,7 @@ export default function BeforeAfterGallery() {
                 src={activeModalItem.image}
                 alt={activeModalItem.title}
                 fill
+                sizes="(max-width: 1024px) 100vw, 896px"
                 className="object-contain"
               />
             </div>
