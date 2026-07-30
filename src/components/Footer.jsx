@@ -31,7 +31,7 @@ export default function Footer() {
       className={`text-sm border-t transition-colors duration-300 ${
         isDark
           ? "bg-slate-950 text-slate-400 border-slate-800"
-          : "bg-slate-900 text-slate-300 border-slate-800"
+          : "bg-slate-100 text-slate-600 border-slate-200"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -50,15 +50,15 @@ export default function Footer() {
                 />
               </div>
               <div className="flex flex-col">
-                <span className="text-lg font-black text-white tracking-tight">
-                  GREEN<span className="text-emerald-400">HAUL</span>
+                <span className={`text-lg font-black tracking-tight ${isDark ? "text-white" : "text-slate-900"}`}>
+                  GREEN<span className="text-emerald-600 dark:text-emerald-400">HAUL</span>
                 </span>
-                <span className="text-[10px] font-bold text-emerald-400 uppercase tracking-wider">
+                <span className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
                   Removal Services
                 </span>
               </div>
             </div>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className={`text-xs leading-relaxed ${isDark ? "text-slate-400" : "text-slate-600"}`}>
               {t.footer.tagline}
             </p>
             <div className="flex items-center gap-3 pt-2">
@@ -66,7 +66,11 @@ export default function Footer() {
                 href="https://facebook.com/search/top?q=greenhaul%20removal"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-slate-300 hover:text-emerald-400 flex items-center justify-center transition-colors"
+                className={`w-9 h-9 rounded-lg border flex items-center justify-center transition-colors ${
+                  isDark
+                    ? "bg-slate-900 border-slate-800 hover:border-emerald-500 text-slate-300 hover:text-emerald-400"
+                    : "bg-white border-slate-300 hover:border-emerald-500 text-slate-700 hover:text-emerald-600 shadow-sm"
+                }`}
                 aria-label="Facebook"
               >
                 <FacebookIcon className="w-4 h-4 text-blue-500" />
@@ -75,7 +79,11 @@ export default function Footer() {
                 href="https://instagram.com/greenhaul.removal"
                 target="_blank"
                 rel="noreferrer"
-                className="w-9 h-9 rounded-lg bg-slate-900 border border-slate-800 hover:border-emerald-500 text-slate-300 hover:text-emerald-400 flex items-center justify-center transition-colors"
+                className={`w-9 h-9 rounded-lg border flex items-center justify-center transition-colors ${
+                  isDark
+                    ? "bg-slate-900 border-slate-800 hover:border-emerald-500 text-slate-300 hover:text-emerald-400"
+                    : "bg-white border-slate-300 hover:border-emerald-500 text-slate-700 hover:text-emerald-600 shadow-sm"
+                }`}
                 aria-label="Instagram"
               >
                 <InstagramIcon className="w-4 h-4 text-pink-500" />
@@ -85,32 +93,57 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-4 ${isDark ? "text-white" : "text-slate-900"}`}>
               {t.footer.quickLinks}
             </h4>
             <ul className="space-y-2.5 text-xs font-medium">
               <li>
-                <a href="#services" className="hover:text-emerald-400 transition-colors">
+                <a
+                  href="#services"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                  }`}
+                >
                   {t.nav.services}
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="hover:text-emerald-400 transition-colors">
+                <a
+                  href="#gallery"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                  }`}
+                >
                   {t.nav.gallery}
                 </a>
               </li>
               <li>
-                <a href="#calculator" className="hover:text-emerald-400 transition-colors">
+                <a
+                  href="#calculator"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                  }`}
+                >
                   {t.nav.calculator}
                 </a>
               </li>
               <li>
-                <a href="#why-us" className="hover:text-emerald-400 transition-colors">
+                <a
+                  href="#why-us"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                  }`}
+                >
                   {t.nav.whyUs}
                 </a>
               </li>
               <li>
-                <a href="#contact" className="hover:text-emerald-400 transition-colors">
+                <a
+                  href="#contact"
+                  className={`transition-colors ${
+                    isDark ? "hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                  }`}
+                >
                   {t.nav.contact}
                 </a>
               </li>
@@ -119,22 +152,22 @@ export default function Footer() {
 
           {/* Working Hours */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-4 ${isDark ? "text-white" : "text-slate-900"}`}>
               {t.footer.hoursHeader}
             </h4>
             <div className="space-y-3 text-xs">
               <div className="flex items-start gap-2">
-                <Clock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-slate-200 block">Lunes a Sábado / Mon - Sat</strong>
-                  <span className="text-emerald-400 font-bold">24 Horas Available</span>
+                  <strong className={`block ${isDark ? "text-slate-200" : "text-slate-900"}`}>Lunes a Sábado / Mon - Sat</strong>
+                  <span className="text-emerald-600 dark:text-emerald-400 font-bold">24 Horas Available</span>
                 </div>
               </div>
               <div className="flex items-start gap-2">
-                <Clock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-slate-200 block">Domingo / Sunday</strong>
-                  <span className="text-slate-300">Con cita previa / By Appointment</span>
+                  <strong className={`block ${isDark ? "text-slate-200" : "text-slate-900"}`}>Domingo / Sunday</strong>
+                  <span className={isDark ? "text-slate-300" : "text-slate-700"}>Con cita previa / By Appointment</span>
                 </div>
               </div>
             </div>
@@ -142,25 +175,35 @@ export default function Footer() {
 
           {/* Direct Contact Info */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4">
+            <h4 className={`text-xs font-bold uppercase tracking-wider mb-4 ${isDark ? "text-white" : "text-slate-900"}`}>
               {t.footer.contactHeader}
             </h4>
             <ul className="space-y-3 text-xs">
               <li className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href="tel:4252802915" className="text-white font-bold hover:text-emerald-400 transition-colors">
+                <Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <a
+                  href="tel:4252802915"
+                  className={`font-bold transition-colors ${
+                    isDark ? "text-white hover:text-emerald-400" : "text-slate-900 hover:text-emerald-600"
+                  }`}
+                >
                   (425) 280-2915
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href="mailto:greenhaul.removal@gmail.com" className="hover:text-emerald-400 transition-colors break-all">
+                <Mail className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <a
+                  href="mailto:greenhaul.removal@gmail.com"
+                  className={`transition-colors break-all ${
+                    isDark ? "hover:text-emerald-400" : "text-slate-700 hover:text-emerald-600"
+                  }`}
+                >
                   greenhaul.removal@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Seattle, Everett & Puget Sound</span>
+                <MapPin className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                <span className={isDark ? "text-slate-300" : "text-slate-700"}>Seattle, Everett & Puget Sound</span>
               </li>
             </ul>
           </div>
@@ -168,7 +211,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-900/80 mt-12 pt-8 text-center text-xs text-slate-500">
+        <div className={`border-t mt-12 pt-8 text-center text-xs ${isDark ? "border-slate-900 text-slate-500" : "border-slate-200 text-slate-500"}`}>
           <p>© {new Date().getFullYear()} GreenHaul Removal & Cleaning Services. {t.footer.rights}</p>
         </div>
       </div>
