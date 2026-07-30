@@ -30,29 +30,15 @@ export default function FloatingActions() {
 
   return (
     <div className="fixed bottom-5 right-5 z-40 flex flex-col items-end gap-3">
-      {/* Light / Dark Mode Floating Switcher */}
-      <button
-        onClick={toggleTheme}
-        className={`w-11 h-11 rounded-full border shadow-xl flex items-center justify-center transition-all hover:scale-110 ${
-          isDark
-            ? "bg-slate-900/90 border-slate-700 text-amber-400 hover:bg-slate-800"
-            : "bg-white/95 border-slate-300 text-amber-500 hover:bg-slate-100"
-        }`}
-        title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
-        aria-label="Toggle theme"
-      >
-        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-      </button>
 
       {/* Scroll to Top */}
       {showScrollTop && (
         <button
           onClick={scrollToTop}
-          className={`w-11 h-11 rounded-full border shadow-xl flex items-center justify-center transition-all hover:scale-110 ${
-            isDark
+          className={`w-11 h-11 rounded-full border shadow-xl flex items-center justify-center transition-all hover:scale-110 ${isDark
               ? "bg-slate-900/90 border-slate-700 text-slate-200 hover:text-white hover:bg-slate-800"
               : "bg-white/95 border-slate-300 text-slate-700 hover:text-slate-900 hover:bg-slate-100"
-          }`}
+            }`}
           aria-label="Scroll to top"
         >
           <ArrowUp className="w-5 h-5" />
@@ -78,6 +64,19 @@ export default function FloatingActions() {
       >
         <MessageCircle className="w-6 h-6" />
       </a>
+
+      {/* Light / Dark Mode Floating Switcher */}
+      <button
+        onClick={toggleTheme}
+        className={`w-11 h-11 rounded-full border shadow-xl flex items-center justify-center transition-all hover:scale-110 ${isDark
+            ? "bg-slate-900/90 border-slate-700 text-amber-400 hover:bg-slate-800"
+            : "bg-white/95 border-slate-300 text-amber-500 hover:bg-slate-100"
+          }`}
+        title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        aria-label="Toggle theme"
+      >
+        {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      </button>
     </div>
   );
 }
