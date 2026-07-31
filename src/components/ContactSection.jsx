@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { PHONE_DISPLAY, TEL_HREF, WHATSAPP_NUMBER } from "@/lib/config";
 import {
   Phone,
   Mail,
@@ -164,12 +165,12 @@ export default function ContactSection() {
                     {t.contact.phoneLabel}
                   </span>
                   <a
-                    href="tel:4252802915"
+                    href={TEL_HREF}
                     className={`text-lg font-bold transition-colors ${
                       isDark ? "text-white hover:text-emerald-400" : "text-slate-900 hover:text-emerald-600"
                     }`}
                   >
-                    (425) 280-2915
+                    {PHONE_DISPLAY}
                   </a>
                   <p className="text-xs text-emerald-600 dark:text-emerald-400 mt-0.5">Call or Text Anytime</p>
                 </div>
@@ -269,14 +270,14 @@ export default function ContactSection() {
             {/* Direct Quick Action Buttons */}
             <div className="grid grid-cols-2 gap-3 pt-2">
               <a
-                href="tel:4252802915"
+                href={TEL_HREF}
                 className="bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold py-3 px-4 rounded-xl text-center shadow transition-all flex items-center justify-center gap-2"
               >
                 <Phone className="w-4 h-4" />
                 <span>Call Now</span>
               </a>
               <a
-                href="https://wa.me/14252802915?text=Hello%20GreenHaul!"
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20GreenHaul!`}
                 target="_blank"
                 rel="noreferrer"
                 className={`text-xs font-bold py-3 px-4 rounded-xl text-center border transition-all flex items-center justify-center gap-2 ${

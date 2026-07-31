@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { PHONE_DISPLAY, TEL_HREF } from "@/lib/config";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 function FacebookIcon({ className = "w-4 h-4" }) {
@@ -182,12 +183,12 @@ export default function Footer() {
               <li className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0" />
                 <a
-                  href="tel:4252802915"
+                  href={TEL_HREF}
                   className={`font-bold transition-colors ${
                     isDark ? "text-white hover:text-emerald-400" : "text-slate-900 hover:text-emerald-600"
                   }`}
                 >
-                  (425) 280-2915
+                  {PHONE_DISPLAY}
                 </a>
               </li>
               <li className="flex items-center gap-2">

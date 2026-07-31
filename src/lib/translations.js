@@ -1,3 +1,5 @@
+import { PHONE_DISPLAY } from "./config";
+
 export const translations = {
   en: {
     nav: {
@@ -7,7 +9,7 @@ export const translations = {
       whyUs: "Why Choose Us",
       contact: "Contact Us",
       getQuote: "Get Free Quote",
-      callNow: "Call (425) 280-2915",
+      callNow: `Call ${PHONE_DISPLAY}`,
     },
     topbar: {
       serving: "Proudly serving Seattle, Everett & surrounding areas",
@@ -20,7 +22,7 @@ export const translations = {
       titleHighlight: "Better Places.",
       description: "Fast, reliable, and affordable junk removal & deep cleaning services for residential and commercial properties in Puget Sound. You point—we haul, clean, and refresh!",
       ctaPrimary: "Request Free Quote",
-      ctaPhone: "Call (425) 280-2915",
+      ctaPhone: `Call ${PHONE_DISPLAY}`,
       trust1Title: "24/7 Service",
       trust1Sub: "Mon - Sat 24 hrs, Sun by appointment",
       trust2Title: "Upfront Pricing",
@@ -166,7 +168,7 @@ export const translations = {
       formTitle: "Request a Free Quote",
       formSubtitle: "Fill out this form and we'll respond promptly with an estimated quote.",
       namePlaceholder: "Your Full Name *",
-      phonePlaceholder: "Phone Number (e.g. 425-280-2915) *",
+      phonePlaceholder: `Phone Number (e.g. ${PHONE_DISPLAY}) *`,
       emailPlaceholder: "Email Address *",
       serviceSelect: "Select Service Needed *",
       locationPlaceholder: "City or ZIP Code (e.g. Seattle, 98101) *",
@@ -176,7 +178,7 @@ export const translations = {
       successMsg: "Thank you! Your quote request has been sent successfully. We will get back to you shortly.",
       errorMsg: "There was an issue sending your message via server. We opened your email client as a backup!",
       whatsappBtn: "Chat on WhatsApp",
-      callBtn: "Call Now (425) 280-2915",
+      callBtn: `Call Now ${PHONE_DISPLAY}`,
     },
     faq: {
       badge: "Got Questions?",
@@ -188,7 +190,7 @@ export const translations = {
         },
         {
           q: "Can I get an accurate quote by sending photos?",
-          a: "Yes! Sending photos of your junk, rooms, or yard via text/WhatsApp to (425) 280-2915 or through our contact form is the fastest way to receive an accurate quote.",
+          a: `Yes! Sending photos of your junk, rooms, or yard via text/WhatsApp to ${PHONE_DISPLAY} or through our contact form is the fastest way to receive an accurate quote.`,
         },
         {
           q: "What are your operating hours?",
@@ -217,7 +219,7 @@ export const translations = {
       whyUs: "Por Qué Elegirnos",
       contact: "Contacto",
       getQuote: "Cotización Gratis",
-      callNow: "Llamar (425) 280-2915",
+      callNow: `Llamar ${PHONE_DISPLAY}`,
     },
     topbar: {
       serving: "Orgullosamente sirviendo a Seattle, Everett y áreas cercanas",
@@ -230,7 +232,7 @@ export const translations = {
       titleHighlight: "Mejores Lugares.",
       description: "Servicio rápido, confiable y accesible de retiro de basura, escombros y limpieza profunda para viviendas y negocios en el área de Puget Sound. ¡Tú señalas, nosotros recogemos y limpiamos!",
       ctaPrimary: "Solicitar Cotización Gratis",
-      ctaPhone: "Llamar (425) 280-2915",
+      ctaPhone: `Llamar ${PHONE_DISPLAY}`,
       trust1Title: "Atención 24/7",
       trust1Sub: "Lun - Sáb 24 horas, Dom con cita",
       trust2Title: "Precios Transparentes",
@@ -376,7 +378,7 @@ export const translations = {
       formTitle: "Solicita tu Cotización Gratis",
       formSubtitle: "Llena este formulario y te responderemos rápidamente con un estimado.",
       namePlaceholder: "Tu Nombre Completo *",
-      phonePlaceholder: "Número Telefónico (ej. 425-280-2915) *",
+      phonePlaceholder: `Número Telefónico (ej. ${PHONE_DISPLAY}) *`,
       emailPlaceholder: "Correo Electrónico *",
       serviceSelect: "Selecciona el Servicio Requerido *",
       locationPlaceholder: "Ciudad o Código Postal (ej. Seattle, 98101) *",
@@ -386,7 +388,7 @@ export const translations = {
       successMsg: "¡Gracias! Tu solicitud de cotización ha sido enviada con éxito. Te contactaremos pronto.",
       errorMsg: "Hubo un inconveniente al enviar por el servidor. ¡Abrimos tu cliente de correo como respaldo!",
       whatsappBtn: "Chatear por WhatsApp",
-      callBtn: "Llamar Ahora (425) 280-2915",
+      callBtn: `Llamar Ahora ${PHONE_DISPLAY}`,
     },
     faq: {
       badge: "¿Tienes Preguntas?",
@@ -398,7 +400,7 @@ export const translations = {
         },
         {
           q: "¿Puedo recibir una cotización enviando fotos?",
-          a: "¡Sí! Enviar fotos de tus objetos, habitaciones o patio por WhatsApp al (425) 280-2915 o a través de nuestro formulario es la forma más rápida de recibir un precio exacto.",
+          a: `¡Sí! Enviar fotos de tus objetos, habitaciones o patio por WhatsApp al ${PHONE_DISPLAY} o a través de nuestro formulario es la forma más rápida de recibir un precio exacto.`,
         },
         {
           q: "¿Cuáles son sus horarios de atención?",

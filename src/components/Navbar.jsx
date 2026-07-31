@@ -4,6 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { PHONE_DISPLAY, TEL_HREF } from "@/lib/config";
 import { Phone, Menu, X, Sparkles, Sun, Moon } from "lucide-react";
 
 export default function Navbar() {
@@ -139,13 +140,13 @@ export default function Navbar() {
             {/* Action Buttons */}
             <div className="hidden sm:flex items-center gap-3">
               <a
-                href="tel:4252802915"
+                href={TEL_HREF}
                 className={`flex items-center gap-2 font-semibold text-sm px-3 py-2 transition-colors ${
                   isDark ? "text-slate-200 hover:text-emerald-400" : "text-slate-800 hover:text-emerald-600"
                 }`}
               >
                 <Phone className="w-4 h-4 text-emerald-500 animate-pulse" />
-                <span>(425) 280-2915</span>
+                <span>{PHONE_DISPLAY}</span>
               </a>
 
               <a
@@ -221,7 +222,7 @@ export default function Navbar() {
 
             <div className="flex flex-col gap-3 pt-2">
               <a
-                href="tel:4252802915"
+                href={TEL_HREF}
                 className={`flex items-center justify-center gap-2 font-bold py-3 rounded-lg border ${
                   isDark
                     ? "bg-slate-800 text-white border-slate-700"
@@ -229,7 +230,7 @@ export default function Navbar() {
                 }`}
               >
                 <Phone className="w-4 h-4 text-emerald-500" />
-                <span>Call (425) 280-2915</span>
+                <span>{t.nav.callNow}</span>
               </a>
 
               <a

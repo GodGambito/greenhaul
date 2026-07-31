@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { PHONE_DISPLAY, TEL_HREF, WHATSAPP_NUMBER } from "@/lib/config";
 import { Phone, Sparkles, Clock, ShieldCheck, Leaf, ArrowRight, MessageCircle } from "lucide-react";
 
 export default function Hero() {
@@ -71,7 +72,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="tel:4252802915"
+                href={TEL_HREF}
                 className={`w-full sm:w-auto border font-bold text-base px-6 py-4 rounded-xl transition-all flex items-center justify-center gap-2 ${
                   isDark
                     ? "bg-slate-900 hover:bg-slate-800 text-slate-100 border-slate-700"
@@ -79,11 +80,11 @@ export default function Hero() {
                 }`}
               >
                 <Phone className="w-5 h-5 text-emerald-500" />
-                <span>(425) 280-2915</span>
+                <span>{PHONE_DISPLAY}</span>
               </a>
 
               <a
-                href="https://wa.me/14252802915?text=Hello%20GreenHaul,%20I'd%20like%20to%20get%20a%20free%20quote!"
+                href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20GreenHaul,%20I'd%20like%20to%20get%20a%20free%20quote!`}
                 target="_blank"
                 rel="noreferrer"
                 className="w-full sm:w-auto bg-green-600 hover:bg-green-500 text-white font-bold text-base px-5 py-4 rounded-xl transition-all flex items-center justify-center gap-2 border border-green-500/40 shadow-sm"
@@ -185,7 +186,7 @@ export default function Hero() {
                 }`}
               >
                 <Sparkles className="w-4 h-4 text-emerald-500" />
-                <span>Call or Text: (425) 280-2915</span>
+                <span>Call or Text: {PHONE_DISPLAY}</span>
               </div>
             </div>
           </div>

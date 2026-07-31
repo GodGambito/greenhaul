@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { PHONE_DISPLAY, TEL_HREF } from "@/lib/config";
 import { Leaf, Clock, DollarSign, Award, CheckCircle } from "lucide-react";
 
 export default function WhyUs() {
@@ -93,14 +94,14 @@ export default function WhyUs() {
           </div>
 
           <a
-            href="tel:4252802915"
+            href={TEL_HREF}
             className={`shrink-0 font-bold text-sm px-6 py-3 rounded-xl border transition-all ${
               isDark
                 ? "bg-slate-800 hover:bg-slate-700 text-white border-slate-700"
                 : "bg-white hover:bg-slate-100 text-slate-900 border-slate-300 shadow-sm"
             }`}
           >
-            Call Dispatch (425) 280-2915
+            Call Dispatch {PHONE_DISPLAY}
           </a>
         </div>
 

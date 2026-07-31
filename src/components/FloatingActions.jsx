@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
+import { PHONE_DISPLAY, TEL_HREF, WHATSAPP_NUMBER } from "@/lib/config";
 import { Phone, MessageCircle, ArrowUp, Sun, Moon } from "lucide-react";
 
 export default function FloatingActions() {
@@ -47,16 +48,16 @@ export default function FloatingActions() {
 
       {/* Quick Call */}
       <a
-        href="tel:4252802915"
+        href={TEL_HREF}
         className="w-12 h-12 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white shadow-xl shadow-emerald-950 flex items-center justify-center transition-all hover:scale-110"
-        title="Call (425) 280-2915"
+        title={`Call ${PHONE_DISPLAY}`}
       >
         <Phone className="w-5 h-5 animate-pulse" />
       </a>
 
       {/* WhatsApp Chat */}
       <a
-        href="https://wa.me/14252802915?text=Hello%20GreenHaul!"
+        href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20GreenHaul!`}
         target="_blank"
         rel="noreferrer"
         className="w-12 h-12 rounded-full bg-green-600 hover:bg-green-500 text-white shadow-xl flex items-center justify-center transition-all hover:scale-110"
