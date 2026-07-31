@@ -4,7 +4,15 @@ import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import { PHONE_DISPLAY, TEL_HREF } from "@/lib/config";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Heart } from "lucide-react";
+
+function XIcon({ className = "w-3 h-3" }) {
+  return (
+    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>
+  );
+}
 
 function FacebookIcon({ className = "w-4 h-4" }) {
   return (
@@ -212,8 +220,27 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className={`border-t mt-12 pt-8 text-center text-xs ${isDark ? "border-slate-900 text-slate-500" : "border-slate-200 text-slate-500"}`}>
+        <div className={`border-t mt-12 pt-8 flex flex-col items-center justify-center text-center gap-3 text-xs ${isDark ? "border-slate-900 text-slate-500" : "border-slate-200 text-slate-500"}`}>
           <p>© {new Date().getFullYear()} GreenHaul Removal & Cleaning Services. {t.footer.rights}</p>
+          
+          <div className="flex items-center justify-center gap-1.5 font-medium flex-wrap">
+            <span>{t.footer.madeWith}</span>
+            <Heart className="w-4 h-4 text-rose-500 fill-rose-500 animate-pulse shrink-0" />
+            <span>{t.footer.by}</span>
+            <a
+              href="https://x.com/El_Barto05"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full border text-xs font-semibold transition-all duration-300 group hover:scale-105 ${
+                isDark
+                  ? "bg-slate-900/80 border-slate-800 text-slate-300 hover:border-emerald-500/50 hover:text-emerald-400 hover:shadow-emerald-950/50 hover:shadow-lg"
+                  : "bg-white border-slate-200 text-slate-700 hover:border-emerald-500 hover:text-emerald-600 hover:shadow-md"
+              }`}
+            >
+              <XIcon className="w-3 h-3 text-slate-400 group-hover:text-emerald-500 transition-colors" />
+              <span>@El_Barto05</span>
+            </a>
+          </div>
         </div>
       </div>
     </footer>

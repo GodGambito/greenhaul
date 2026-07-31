@@ -209,6 +209,8 @@ export const translations = {
       hoursHeader: "Working Hours",
       contactHeader: "Contact Info",
       rights: "All rights reserved. GreenHaul Removal & Cleaning Services.",
+      madeWith: "Made with",
+      by: "by",
     },
   },
   es: {
@@ -419,6 +421,8 @@ export const translations = {
       hoursHeader: "Horario de Atención",
       contactHeader: "Información de Contacto",
       rights: "Todos los derechos reservados. GreenHaul Removal & Cleaning Services.",
+      madeWith: "Hecho con",
+      by: "por",
     },
   },
 };
